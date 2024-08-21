@@ -4,7 +4,7 @@
 #include <math.h>
 #include <complex.h>
 
-
+//TESTING
 SDL_Window *window;
 SDL_Renderer *rend;
 
