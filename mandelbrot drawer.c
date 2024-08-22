@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include <SDL2/SDL.h>
 #include <stdbool.h>
+#include <SDL2/SDL.h>
 #include <math.h>
 #include <complex.h>
 
@@ -20,8 +20,7 @@ bool init()
 		printf("an error occured: %s", SDL_GetError());
 		return false;
 	}
-	app.window = SDL_CreateWindow("mandelbrot", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-						1000, 1000, 0);
+	app.window = SDL_CreateWindow("mandelbrot", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1000, 1000, 0);
 	app.rend = SDL_CreateRenderer(app.window, -1, SDL_RENDERER_ACCELERATED);
 	
 	SDL_RenderClear(app.rend);
@@ -33,18 +32,17 @@ bool init()
 		{
 			float scaledx = width / 300.0;
             		float scaledy = height / 300.0;
-            		double complex c = (scaledx - 2.5) + (scaledy - 1.75) * I;
+            		double complex c = (scaledx - 2.5) + (scaledy - 1.75) * I; // this scales and centers the set 
 			
-			for(int iteration = 0; iteration < 100; iteration++)
+			for(int iteration = 0; iteration < 50; iteration++) // this loop iterates over z using the value of complex c
             		{
                 		z = cpow(z, 2);
                 		z += c;
-                		iteration++;
 
-               			if(fabs(z) >= 2)
+               			if(fabs(z) >= 2) // checking if z is out of the set and draws a white pixel if thats the case
                			{
 					SDL_SetRenderDrawColor(app.rend, 255, 255, 255, 255);
-					SDL_RenderDrawPoint(app.rend, width, height);
+					SDL_RenderDrawPoint(app.rend, width, height); 
                				break;
                			}
             		}
