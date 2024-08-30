@@ -66,7 +66,8 @@ int main()
 			switch(event.type)
 			{
 				case SDL_QUIT:
-
+					SDL_DestroyRenderer(app.rend);
+					SDL_DestroyWindow(app.window);
 					running = false;
 					break;
 			}
