@@ -63,11 +63,12 @@ int main()
 	{
 		if(SDL_PollEvent(&event) && event.type == SDL_QUIT)
 		{
-			SDL_DestroyRenderer(app.rend);
-			SDL_DestroyWindow(app.window);
-			SDL_Quit();
 			break;
 		}
 	}
+
+	SDL_DestroyRenderer(app.rend);
+	SDL_DestroyWindow(app.window);
+	SDL_Quit();
 	return 0;
 }
